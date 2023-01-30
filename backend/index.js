@@ -18,9 +18,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/notes", noteRoutes);
 __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/frontend/build")));
-app.use("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
+app.use('*', express.static(path.join(__dirname, "frontend", "build")))
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
